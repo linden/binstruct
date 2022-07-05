@@ -777,7 +777,7 @@ func Test_InvalidType(t *testing.T) {
 	data := []byte{}
 
 	type dataStruct struct {
-		Invalid interface{}
+		Invalid any
 	}
 
 	var actual dataStruct

@@ -28,11 +28,11 @@ func (e *InvalidUnmarshalError) Error() string {
 	return "binstruct: Unmarshal(nil " + e.Type.String() + ")"
 }
 
-func (u *unmarshal) Unmarshal(v interface{}) error {
+func (u *unmarshal) Unmarshal(v any) error {
 	return u.unmarshal(v, nil)
 }
 
-func (u *unmarshal) unmarshal(v interface{}, parentStructValues []reflect.Value) error {
+func (u *unmarshal) unmarshal(v any, parentStructValues []reflect.Value) error {
 	rv := reflect.ValueOf(v)
 	if rv.Kind() != reflect.Ptr || rv.IsNil() {
 		return &InvalidUnmarshalError{reflect.TypeOf(v)}

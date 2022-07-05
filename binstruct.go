@@ -7,20 +7,20 @@ import (
 
 // UnmarshalLE parses the binary data with little-endian byte order and
 // stores the result in the value pointed to by v.
-func UnmarshalLE(data []byte, v interface{}) error {
+func UnmarshalLE(data []byte, v any) error {
 	return Unmarshal(data, binary.LittleEndian, v)
 }
 
 // UnmarshalBE parses the binary data with big-endian byte order and
 // stores the result in the value pointed to by v.
-func UnmarshalBE(data []byte, v interface{}) error {
+func UnmarshalBE(data []byte, v any) error {
 	return Unmarshal(data, binary.BigEndian, v)
 }
 
 // Unmarshal parses the binary data with byte order and stores the result
 // in the value pointed to by v. If v is nil or not a pointer,
 // Unmarshal returns an InvalidUnmarshalError.
-func Unmarshal(data []byte, order binary.ByteOrder, v interface{}) error {
+func Unmarshal(data []byte, order binary.ByteOrder, v any) error {
 	return NewReaderFromBytes(data, order, false).Unmarshal(v)
 }
 
@@ -47,6 +47,6 @@ func (dec *Decoder) SetDebug(debug bool) {
 
 // Decode reads the binary-encoded value from its
 // input and stores it in the value pointed to by v.
-func (dec *Decoder) Decode(v interface{}) error {
+func (dec *Decoder) Decode(v any) error {
 	return NewReader(dec.r, dec.order, dec.debug).Unmarshal(v)
 }

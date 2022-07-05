@@ -10,7 +10,7 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 
-	"github.com/ghostiam/binstruct"
+	"github.com/linden/binstruct"
 )
 
 // Portable Network Graphics (PNG) Specification: https://www.w3.org/TR/PNG/
@@ -87,12 +87,12 @@ func (t PNGColorType) String() string {
 
 type Chunk struct {
 	Len  int32
-	Type string      `bin:"len:4"`
-	Data interface{} `bin:"ReadChunkData"`
+	Type string `bin:"len:4"`
+	Data any    `bin:"ReadChunkData"`
 	CRC  [4]byte
 }
 
-func (c *Chunk) ReadChunkData(r binstruct.Reader) (interface{}, error) {
+func (c *Chunk) ReadChunkData(r binstruct.Reader) (any, error) {
 	switch c.Type {
 	case "PLTE": // https://www.w3.org/TR/PNG/#11PLTE
 		v := PaletteData{DataLen: c.Len}

@@ -1,10 +1,10 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/ghostiam/binstruct)](https://goreportcard.com/report/github.com/ghostiam/binstruct) [![CodeCov](https://codecov.io/gh/ghostiam/binstruct/branch/master/graph/badge.svg)](https://codecov.io/gh/ghostiam/binstruct) [![GoDoc](https://godoc.org/github.com/ghostiam/binstruct?status.svg)](https://godoc.org/github.com/ghostiam/binstruct) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ghostiam/binstruct/blob/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/linden/binstruct)](https://goreportcard.com/report/github.com/linden/binstruct) [![CodeCov](https://codecov.io/gh/ghostiam/binstruct/branch/master/graph/badge.svg)](https://codecov.io/gh/ghostiam/binstruct) [![GoDoc](https://godoc.org/github.com/linden/binstruct?status.svg)](https://godoc.org/github.com/linden/binstruct) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/linden/binstruct/blob/master/LICENSE)
 
 # binstruct
 Golang binary decoder to structure
 
 # Install
-```go get -u github.com/ghostiam/binstruct```
+```go get -u github.com/linden/binstruct```
 
 # Examples
 
@@ -25,7 +25,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/ghostiam/binstruct"
+	"github.com/linden/binstruct"
 )
 
 func main() {
@@ -62,7 +62,7 @@ import (
 	"fmt"
 	"log"
 	
-	"github.com/ghostiam/binstruct"
+	"github.com/linden/binstruct"
 )
 
 func main() {
@@ -141,7 +141,7 @@ type Reader interface {
 
 	// Unmarshal parses the binary data and stores the result
 	// in the value pointed to by v.
-	Unmarshal(v interface{}) error
+	Unmarshal(v any) error
 
 	// WithOrder changes the byte order for the new Reader
 	WithOrder(order binary.ByteOrder) Reader
@@ -157,7 +157,7 @@ import (
 	"fmt"
 	"log"
 	
-	"github.com/ghostiam/binstruct"
+	"github.com/linden/binstruct"
 )
 
 func main() {
